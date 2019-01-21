@@ -8,7 +8,7 @@ public class Updater : MonoBehaviour {
     public Text text;
     public string inputtext;
     public GameObject circleColor;
-    public Color color;
+    //public Color color; // it's never used
     public GameObject[] shuffleCircles;
 
     [SerializeField] GameObject circlePosition;
@@ -18,19 +18,19 @@ public class Updater : MonoBehaviour {
     
     private void Start()
     {
-        //inputtext = "change text";
+        //inputtext = "change text"; //overwrites the inputtext
 
         colorList = new List<Color> {
             Color.red,
             Color.blue,
-            Color.green,
+            Color.green, //comma was missing
             Color.magenta
         };
     }
 
     public void UpdateTextWithInspectorInput()
     {
-        text.text = inputtext;
+        text.text = inputtext; //the "text" variable was written with a capital T, resulting in the interpreter to see it as the Class
     }
 
     public void UpdateCircleColor()
@@ -48,7 +48,7 @@ public class Updater : MonoBehaviour {
     {
         Transform circTransform = circlePosition.GetComponent<Transform>();
         
-        float randomPosX = UnityEngine.Random.Range(5, 433);
+        float randomPosX = UnityEngine.Random.Range(5, 433); //use Range instead of Next
         circTransform.localPosition = new Vector3(randomPosX, circTransform.localPosition.y, circTransform.localPosition.z);
     }
 
